@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/calculator.css">
+  </head>
+  <body>
+    <script>
+      window.CalculatorENV = {{ENV}};
+      window.EmberENV = window.CalculatorENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/calculator.js"></script>
+    <script>
+      window.Calculator = require('calculator/app')['default'].create(CalculatorENV.APP);
+    </script>
+  </body>
+</html>

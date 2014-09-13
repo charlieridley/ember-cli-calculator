@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-9">
+    <div class="screen">
+      <span class="total">{{total}}</span> {{appliedOperator}} {{inputs}}
+    </div>
+  </div>
+  <div class="col-xs-3"><button class="btn btn-block clear" {{action "clear"}}>C</button></div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "7"}}>7</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "8"}}>8</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "9"}}>9</button></div>
+  <div class="col-xs-3"><button class="btn btn-block operator" {{action "applyOperator" "*"}}>*</button></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "4"}}>4</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "5"}}>5</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "6"}}>6</button></div>
+  <div class="col-xs-3"><button class="btn btn-block operator" {{action "applyOperator" "/"}}>/</button></div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "1"}}>1</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "2"}}>2</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "3"}}>3</button></div>
+  <div class="col-xs-3"><button class="btn btn-block operator" {{action "applyOperator" "+"}}>+</button></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "0"}}>0</button></div>
+  <div class="col-xs-3"><button class="btn btn-block" {{action "setInput" "."}}>.</button></div>
+  <div class="col-xs-3"><button class="btn btn-block operator" {{action "equals" "="}}>=</button></div>
+  <div class="col-xs-3"><button class="btn btn-block operator" {{action "applyOperator" "-"}}>-</button></div>
+</div>
+
