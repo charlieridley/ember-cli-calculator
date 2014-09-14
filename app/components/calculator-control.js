@@ -4,15 +4,14 @@ import operatorFunctions from "calculator/utils/operator-functions";
 
 export default Ember.Component.extend({
   inputs: "",
-  getInputValidator: function(){
-    return inputValidator;
-  },
+  inputValidator: inputValidator,
+  operatorFunctions: operatorFunctions,
   getOperatorFunctions: function(){
     return operatorFunctions;
   },
   actions: {
     setInput: function(value) {
-      if (this.getInputValidator().isValid(this.get("inputs") + value)) {
+      if (this.get("inputValidator").isValid(this.get("inputs") + value)) {
         this.set("inputs", this.get("inputs") + value);
       }
     },
@@ -39,7 +38,7 @@ export default Ember.Component.extend({
     },
 
     calculate: function(){
-      var result = this.getOperatorFunctions()[this.get("appliedOperator")](this.get("total"), parseFloat(this.get("inputs")));
+      var result = this.get("operatorFunctions")[this.get("appliedOperator")](this.get("total"), parseFloat(this.get("inputs")));
       this.set("total", result);
       this.set("inputs", "");
     },

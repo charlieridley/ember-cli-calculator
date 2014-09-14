@@ -4,32 +4,26 @@ import { test, moduleForComponent } from "ember-qunit";
 moduleForComponent("calculator-control");
 
 test("setInput with valid input with no previous inputs", function(){
-  this.subject().getInputValidator = function(){
-    return {
-      isValid: function(){ return true; }
-    };
-  };
+  this.subject().set("inputValidator", {
+    isValid: function(){ return true; }
+  });
   this.subject().send("setInput", "1");
   equal(this.subject().get("inputs"), "1");
 });
 
 test("setInput with valid input with previous inputs", function(){
-  this.subject().getInputValidator = function(){
-    return {
-      isValid: function(){ return true; }
-    };
-  };
+  this.subject().set("inputValidator", {
+    isValid: function(){ return true; }
+  });
   this.subject().set("inputs", "23");
   this.subject().send("setInput", "1");
   equal(this.subject().get("inputs"), "231");
 });
 
 test("setInput with invalid input with no previous inputs", function(){
-  this.subject().getInputValidator = function(){
-    return {
-      isValid: function(){ return false; }
-    };
-  };
+  this.subject().set("inputValidator", {
+    isValid: function(){ return false; }
+  });
   this.subject().send("setInput", "1");
   equal(this.subject().get("inputs"), "");
 });
@@ -53,17 +47,15 @@ test("applyOperator with no previous appliedOperator and no inputs", function(){
 
 test("applyOperator with a previous appliedOperator with total and inputs", function(){
   var addWasCalled, multiplyWasCalled;
-  this.subject().getOperatorFunctions = function(){
-    return {
-      "*": function (x, y) {
-        multiplyWasCalled = {x: x, y: y};
-        return 25;
-      },
-      "+": function (x, y) {
-        addWasCalled = {x: x, y: y};
-      }
-    };
-  };
+  this.subject().set("operatorFunctions", {
+    "*": function (x, y) {
+      multiplyWasCalled = {x: x, y: y};
+      return 25;
+    },
+    "+": function (x, y) {
+      addWasCalled = {x: x, y: y};
+    }
+  });
   this.subject().set("total", 3);
   this.subject().set("appliedOperator", "*");
   this.subject().set("inputs", "2.1");
@@ -78,14 +70,12 @@ test("applyOperator with a previous appliedOperator with total and inputs", func
 
 test("equals with a previous appliedOperator with total and inputs", function(){
   var multiplyWasCalled;
-  this.subject().getOperatorFunctions = function(){
-    return {
-      "*": function (x, y) {
-        multiplyWasCalled = {x: x, y: y};
-        return 25;
-      }
-    };
-  };
+  this.subject().set("operatorFunctions", {
+    "*": function (x, y) {
+      multiplyWasCalled = {x: x, y: y};
+      return 25;
+    }
+  });
   this.subject().set("total", 3);
   this.subject().set("appliedOperator", "*");
   this.subject().set("inputs", "2.1");
@@ -99,14 +89,12 @@ test("equals with a previous appliedOperator with total and inputs", function(){
 
 test("equals with a previous appliedOperator with total but no inputs", function(){
   var multiplyWasCalled;
-  this.subject().getOperatorFunctions = function(){
-    return {
-      "*": function (x, y) {
-        multiplyWasCalled = {x: x, y: y};
-        return 25;
-      }
-    };
-  };
+  this.subject().set("operatorFunctions", {
+    "*": function (x, y) {
+      multiplyWasCalled = {x: x, y: y};
+      return 25;
+    }
+  });
   this.subject().set("total", 3);
   this.subject().set("appliedOperator", "*");
   this.subject().set("inputs", "");
@@ -119,17 +107,15 @@ test("equals with a previous appliedOperator with total but no inputs", function
 
 test("applyOperator with a previous appliedOperator with inputs but no total", function(){
   var addWasCalled, multiplyWasCalled;
-  this.subject().getOperatorFunctions = function(){
-    return {
-      "*": function (x, y) {
-        multiplyWasCalled = {x: x, y: y};
-        return 25;
-      },
-      "+": function (x, y) {
-        addWasCalled = {x: x, y: y};
-      }
-    };
-  };
+  this.subject().set("operatorFunctions", {
+    "*": function (x, y) {
+      multiplyWasCalled = {x: x, y: y};
+      return 25;
+    },
+    "+": function (x, y) {
+      addWasCalled = {x: x, y: y};
+    }
+  });
   this.subject().set("inputs", "2.1");
   this.subject().send("applyOperator", "+");
   equal(this.subject().get("inputs"), "");
